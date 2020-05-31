@@ -21,6 +21,21 @@
     overflow-y: scroll;
 }
 
+.search-result-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-heading-wrapper{
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
 
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {

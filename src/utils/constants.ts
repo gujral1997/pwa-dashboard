@@ -39,9 +39,15 @@ const emptyRoutes = [
 
 const normalUserHeadings = ["Name", "Email", "Top User", "Block/Unblock"];
 
+const searchUserHeadings = ["Name", "Email", ""];
+
+const EXPIRY_TIME = 300000;
+
 export {
   headerRoutes,
   drawerRoutes,
   emptyRoutes,
   normalUserHeadings,
+  searchUserHeadings,
+  EXPIRY_TIME,
 };

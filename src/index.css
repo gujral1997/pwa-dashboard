@@ -13,3 +13,8 @@ body{
     flex: 1;
     text-align: center;
 }
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
