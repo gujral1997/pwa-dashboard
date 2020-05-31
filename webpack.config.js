@@ -47,6 +47,9 @@ module.exports = ({ env }) => {
                 template: './src/index.html',
                 filename: 'index.html',
             })
-        ]
+        ],
+        devServer: {
+            historyApiFallback: true
+        }
     }
 };
