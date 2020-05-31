@@ -3,6 +3,8 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
+const URLS = ["/", "/home", "/sports", "/news", "/log-out", "/top-users", "/users"];
+
 const path = require('path')
 
 const commonPlugins = [
@@ -19,6 +21,27 @@ module.exports = ({ env }) => {
                 reportFilename: "./report.html",
                 openAnalyzer: true,
             })] : []
+
+    const prodPlugins = [
+        ...analyzer,
+        ...commonPlugins,
+    ]
+        .concat(URLS.map(url =>
+            new HtmlWebPackPlugin({
+                template: `!!prerender-loader?${JSON.stringify({ string: true, params: { url } })}!${path.join(__dirname, "/src/index.html")}`,
+                filename: path.join(__dirname, `/dist${url}${url === "/" ? "index" : ""}.html`),
+            })
+        ))
+
+    const devPlugins = [
+        ...commonPlugins,
+        new HtmlWebPackPlugin({
+            template: './src/index.html',
+            filename: 'index.html',
+        })
+    ]
+
+    const plugins = env === "dev" ? devPlugins : prodPlugins
 
     return {
         mode: "production",
@@ -51,14 +74,7 @@ module.exports = ({ env }) => {
                 }
             ],
         },
-        plugins: [
-            ...analyzer,
-            ...commonPlugins,
-            new HtmlWebPackPlugin({
-                template: './src/index.html',
-                filename: 'index.html',
-            })
-        ],
+        plugins,
         devServer: {
             historyApiFallback: true
         },
