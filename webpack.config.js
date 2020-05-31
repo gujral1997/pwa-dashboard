@@ -1,6 +1,15 @@
 
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+
+const path = require('path')
+
+const commonPlugins = [
+    new ServiceWorkerWebpackPlugin({
+        entry: path.join(__dirname, 'src/sw.js'),
+    }),
+]
 
 module.exports = ({ env }) => {
     const analyzer = env === "analyze" ?
@@ -43,6 +52,7 @@ module.exports = ({ env }) => {
             ],
         },
         plugins: [
+            ...commonPlugins,
             new HtmlWebPackPlugin({
                 template: './src/index.html',
                 filename: 'index.html',
