@@ -52,6 +52,7 @@ module.exports = ({ env }) => {
             ],
         },
         plugins: [
+            ...analyzer,
             ...commonPlugins,
             new HtmlWebPackPlugin({
                 template: './src/index.html',
@@ -60,6 +61,17 @@ module.exports = ({ env }) => {
         ],
         devServer: {
             historyApiFallback: true
+        },
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        chunks: 'all'
+                    }
+                }
+            }
         }
     }
 };
