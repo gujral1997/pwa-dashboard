@@ -12,9 +12,7 @@ import { TUser } from "../../utils/types";
 import { normalUserHeadings, searchUserHeadings } from "../../utils/constants";
 
 const renderHeadings = (list: string[]) => (
-  <div
-    className='search-heading-wrapper'
-  >
+  <div className="search-heading-wrapper">
     {list.map((value) => (
       <div className="flex__center">
         <b>{value}</b>
@@ -69,31 +67,30 @@ const UserPage = () => {
       />
     ));
 
-  const renderFilteredUserList = (topUser: boolean) =>
-    users
-      .filter(
-        ({ name, email, isTopUser }) =>
-          (isSubString(name, query) || isSubString(email, query)) &&
-          (topUser ? !isTopUser : isTopUser)
-      )
-      .map((user, index) => (
-        <Tile
-          showDetails
-          key={user.id}
-          userData={user}
-          onBlockChange={() => updateUser(user, index, "isBlocked")}
-          onTopUserChange={() => updateUser(user, index, "isTopUser")}
-        />
-      ));
+  const renderFilteredUserList = (topUser: boolean) => {
+    const userList = users.filter(
+      ({ name, email, isTopUser }) =>
+        (isSubString(name, query) || isSubString(email, query)) &&
+        (topUser ? !isTopUser : isTopUser)
+    );
+    if (userList.length === 0) return <h4>No user found!</h4>;
+    return userList.map((user, index) => (
+      <Tile
+        showDetails
+        key={user.id}
+        userData={user}
+        onBlockChange={() => updateUser(user, index, "isBlocked")}
+        onTopUserChange={() => updateUser(user, index, "isTopUser")}
+      />
+    ));
+  };
 
   const renderSearchResults = () => (
-    <div
-      className={'search-result-wrapper'}
-    >
-      <h4>Top Users:</h4>
+    <div className={"search-result-wrapper"}>
+      <h2>Top Users:</h2>
       {renderHeadings(userList)}
       {renderFilteredUserList(false)}
-      <h4>Normal Users:</h4>
+      <h2>Normal Users:</h2>
       {renderHeadings(userList)}
       {renderFilteredUserList(true)}
     </div>
@@ -110,8 +107,8 @@ const UserPage = () => {
               {renderUserList()}
             </>
           ) : (
-              renderSearchResults()
-            )}
+            renderSearchResults()
+          )}
         </div>
       </div>
     </div>

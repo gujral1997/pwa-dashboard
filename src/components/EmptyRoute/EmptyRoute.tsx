@@ -6,7 +6,7 @@ interface EmptyRouteProps {
 }
 
 /**
- * Fallback page for the routes other the /users 
+ * Fallback page for the routes other the /users
  *
  * @param {*} { heading }
  */

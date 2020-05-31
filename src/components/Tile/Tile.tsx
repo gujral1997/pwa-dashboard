@@ -45,32 +45,28 @@ const Tile: FC<TileProps> = ({
             className="flex__center"
             onClick={onCLickExpand}
             style={{
-              cursor: "pointer"
+              cursor: "pointer",
             }}
           >
             <b>{expand ? "-" : "+"}</b>
           </div>
         ) : (
-            <Fragment>
-              <div className="flex__center">
-                <input
-                  type="checkbox"
-                  checked={isTopUser}
-                  onChange={onTopUserChange}
-                  className="flex__center"
-                />
-              </div>
-              <div className="flex__center">
-                <Switch checked={!isBlocked} onchange={onBlockChange} />
-              </div>
-            </Fragment>
-          )}
+          <Fragment>
+            <div className="flex__center">
+              <input
+                type="checkbox"
+                checked={isTopUser}
+                onChange={onTopUserChange}
+                className="flex__center"
+              />
+            </div>
+            <div className="flex__center">
+              <Switch checked={!isBlocked} onchange={onBlockChange} />
+            </div>
+          </Fragment>
+        )}
       </div>
-      {expand && (
-        <div className='flex-wrap'>
-          {renderUserDetails(userData)}
-        </div>
-      )}
+      {expand && <div className="flex-wrap">{renderUserDetails(userData)}</div>}
     </div>
   );
 };
