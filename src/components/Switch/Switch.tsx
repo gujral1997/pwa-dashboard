@@ -6,6 +6,12 @@ interface SwitchProps {
   onchange?: (e: any) => void;
 }
 
+/**
+ * Switch for blocking/unblocking the user
+ *
+ * @param {*} { checked = true, onchange }
+ * @returns
+ */
 const Switch: FC<SwitchProps> = ({ checked = true, onchange }) => {
   return (
     <label className="switch">

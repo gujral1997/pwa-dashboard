@@ -23,6 +23,17 @@ const renderUserDetails = (user: TUser) => {
   });
 };
 
+/**
+ * Tile to display user details
+ *
+ * @param {*} {
+ *   userData,
+ *   onBlockChange,
+ *   onTopUserChange,
+ *   showDetails,
+ * }
+ * @returns
+ */
 const Tile: FC<TileProps> = ({
   userData,
   onBlockChange,
@@ -51,20 +62,20 @@ const Tile: FC<TileProps> = ({
             <b>{expand ? "-" : "+"}</b>
           </div>
         ) : (
-          <Fragment>
-            <div className="flex__center">
-              <input
-                type="checkbox"
-                checked={isTopUser}
-                onChange={onTopUserChange}
-                className="flex__center"
-              />
-            </div>
-            <div className="flex__center">
-              <Switch checked={!isBlocked} onchange={onBlockChange} />
-            </div>
-          </Fragment>
-        )}
+            <Fragment>
+              <div className="flex__center">
+                <input
+                  type="checkbox"
+                  checked={isTopUser}
+                  onChange={onTopUserChange}
+                  className="flex__center"
+                />
+              </div>
+              <div className="flex__center">
+                <Switch checked={!isBlocked} onchange={onBlockChange} />
+              </div>
+            </Fragment>
+          )}
       </div>
       {expand && <div className="flex-wrap">{renderUserDetails(userData)}</div>}
     </div>

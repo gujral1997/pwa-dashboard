@@ -5,6 +5,8 @@ import "./index.css";
 
 render(<App />, document.getElementById("root"));
 
+// Registering service worker
+
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
         navigator.serviceWorker

@@ -11,6 +11,11 @@ import {
 import { TUser } from "../../utils/types";
 import { normalUserHeadings, searchUserHeadings } from "../../utils/constants";
 
+/**
+ * Render the headers for the user details
+ *
+ * @param {string[]} list
+ */
 const renderHeadings = (list: string[]) => (
   <div className="search-heading-wrapper">
     {list.map((value) => (
@@ -21,6 +26,11 @@ const renderHeadings = (list: string[]) => (
   </div>
 );
 
+/**
+ * User screen
+ *
+ * @returns
+ */
 const UserPage = () => {
   const [users, setUsers] = useState<TUser[]>([]);
 
@@ -107,8 +117,8 @@ const UserPage = () => {
               {renderUserList()}
             </>
           ) : (
-            renderSearchResults()
-          )}
+              renderSearchResults()
+            )}
         </div>
       </div>
     </div>

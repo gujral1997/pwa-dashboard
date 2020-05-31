@@ -14,6 +14,10 @@ const headerButton = (
   />
 );
 
+/**
+ * Rendering routes other than users
+ *
+ */
 const renderEmptyRoutes = () =>
   emptyRoutes.map((route) => (
     <Route key={route} path={route}>
@@ -23,6 +27,11 @@ const renderEmptyRoutes = () =>
 
 const heading = getCurrentPath();
 
+/**
+ * Root Component
+ *
+ * @returns
+ */
 const App = () => {
   return (
     <div>

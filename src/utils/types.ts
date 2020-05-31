@@ -1,3 +1,5 @@
+// All the global types
+
 interface TCompany {
   name: string;
   catchPhrase: string;

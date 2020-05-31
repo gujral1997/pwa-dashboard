@@ -6,6 +6,12 @@ interface SearchBarProps {
   onChangeInput: (value: string) => void;
 }
 
+/**
+ * Search Bar to filter normal and top users
+ *
+ * @param {*} { value, onChangeInput }
+ * @returns
+ */
 const SearchBar: FC<SearchBarProps> = ({ value, onChangeInput }) => {
   return (
     <div className="search-wrap">
