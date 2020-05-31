@@ -4,7 +4,12 @@ body{
 }
 
 .header-button{
-color: white;
-font-size: 24px;
-cursor: pointer;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.flex__center{
+    flex: 1;
+    text-align: center;
 }

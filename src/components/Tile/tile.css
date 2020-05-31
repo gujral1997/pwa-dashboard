@@ -1,0 +1,22 @@
+.tile-wrapper{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 96%;
+    margin: 8px 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.default-view{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+.details-view{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}

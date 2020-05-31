@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { getCurrentPath } from "./utils/helpers";
 import EmptyRoute from "./components/EmptyRoute/EmptyRoute";
 import { drawerRoutes, headerRoutes, emptyRoutes } from "./utils/constants";
+import UserPage from "./containers/User/User";
 
 const headerButton = (
   <Drawer
@@ -13,10 +14,6 @@ const headerButton = (
   />
 );
 
-/**
- *
- *
- */
 const renderEmptyRoutes = () =>
   emptyRoutes.map((route) => (
     <Route key={route} path={route}>
@@ -33,7 +30,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/users">
-            <EmptyRoute heading={getCurrentPath()} />
+            <UserPage />
           </Route>
           {renderEmptyRoutes()}
         </Switch>

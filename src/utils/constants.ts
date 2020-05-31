@@ -37,9 +37,11 @@ const emptyRoutes = [
   "/top-users",
 ];
 
+const normalUserHeadings = ["Name", "Email", "Top User", "Block/Unblock"];
 
 export {
   headerRoutes,
   drawerRoutes,
-  emptyRoutes
+  emptyRoutes,
+  normalUserHeadings,
 };
