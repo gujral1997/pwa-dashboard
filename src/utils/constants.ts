@@ -33,8 +33,7 @@ const emptyRoutes = [
   "/home",
   "/sports",
   "/news",
-  "/log-out",
-  "/top-users",
+  "/log-out"
 ];
 
 const normalUserHeadings = ["Name", "Email", "Top User", "Block/Unblock"];
