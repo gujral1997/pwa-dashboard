@@ -10,21 +10,8 @@ import {
 } from "../../utils/helpers";
 import { TUser } from "../../utils/types";
 import { normalUserHeadings, searchUserHeadings } from "../../utils/constants";
+import { renderHeadings } from './userHelpers';
 
-/**
- * Render the headers for the user details
- *
- * @param {string[]} list
- */
-const renderHeadings = (list: string[]) => (
-  <div className="search-heading-wrapper">
-    {list.map((value) => (
-      <div className="flex__center">
-        <b>{value}</b>
-      </div>
-    ))}
-  </div>
-);
 
 /**
  * User screen

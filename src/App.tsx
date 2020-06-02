@@ -5,7 +5,30 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { getCurrentPath } from "./utils/helpers";
 import EmptyRoute from "./components/EmptyRoute/EmptyRoute";
 import { drawerRoutes, headerRoutes, emptyRoutes } from "./utils/constants";
-import UserPage from "./containers/User/User";
+import loadable from "@loadable/component"
+
+const Loading = () => <div>Loading...</div>
+
+const UserPage = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "users"*/ "./containers/User/User"
+    ),
+  {
+    fallback: <Loading />,
+  }
+)
+
+const TopUsers = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "topUsers"*/ "./containers/TopUsers"
+    ),
+  {
+    fallback: <Loading />,
+  }
+)
+
 
 const headerButton = (
   <Drawer
@@ -40,6 +63,9 @@ const App = () => {
         <Switch>
           <Route path="/users">
             <UserPage />
+          </Route>
+          <Route path="/top-users">
+            <TopUsers />
           </Route>
           {renderEmptyRoutes()}
         </Switch>
